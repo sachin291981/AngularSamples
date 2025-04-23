@@ -1,0 +1,66 @@
+<p>Geo Server Data Admin</p>
+<form class="responsive-form">
+ 
+    <!-- First set of rows with label, dropdown, and button -->
+    <div class="form-row" >
+      <label for="dropdown1">Workspaces</label>
+
+      <select id="workspacedropdown" [(ngModel)]="selectedWorkspaceItem" (change)="onItemChange($event)"  [ngModelOptions]="{standalone:true}" >
+        <option value="" selected>Select a workspace</option>
+        <option *ngFor="let name of dataadmin.workspacenames">{{ name }}</option>
+      </select>
+
+      <button type="Get Workspaces" (click)="getWorkspaceList()">Get Workspaces</button>
+    </div>
+    <div class="form-row">
+      <label for="dropdown2">Datastores</label>
+
+      <select id="datastoredropdown" [(ngModel)]="selectedDataStoreItem" (change)="ondatastorechangeChange($event)"  [ngModelOptions]="{standalone:true}" >
+        <option value="" selected>Select a datastore</option>
+        <option *ngFor="let name of dataadmin.datastorenames">{{ name }}</option>
+      </select>
+     
+      <button type="button" (click)="getdatastoresbyworkspace()">Get DataStores</button>
+    </div>
+    <div class="form-row">
+      <label for="dropdown3">Workspace</label>
+      <input type="text" id="textbox1" name="textbox1" [(ngModel)]="dataadmin.workspacename">
+      <button type="button" (click)="createworkspace()">Create Workspace</button>
+    </div>
+  
+    <!-- Second set of rows with text box controls -->
+    <div class="form-row">
+      <label for="textbox1">Hostname</label>
+      <input type="text" id="textboxhostname" name="textbox1" [(ngModel)]="dataadmin.datastore.hostname">
+    </div>
+    <div class="form-row">
+      <label for="textbox2">Port</label>
+      <input type="text" id="textboxport" name="textbox2" [(ngModel)]="dataadmin.datastore.port">
+    </div>
+    <div class="form-row">
+      <label for="textbox3">Database</label>
+      <input type="text" id="textboxdatabase" name="textbox3" [(ngModel)]="dataadmin.datastore.database">
+    </div>
+    <div class="form-row">
+      <label for="textbox4">Username</label>
+      <input type="text" id="txtboxusername" name="textbox4" [(ngModel)]="dataadmin.datastore.username">
+    </div>
+    <div class="form-row">
+      <label for="textbox4">Password</label>
+      <input type="text" id="textboxpassword" name="textbox4" [(ngModel)]="dataadmin.datastore.password">
+    </div>
+    <div class="form-row">
+      
+
+      <button type="button" (click)="createDatastore()"  >Create Datastore</button>
+
+      </div>
+      <!-- Text area for activity log -->
+      <div class="form-row">
+        <label for="activityLog">Activity Log</label>
+        <textarea id="activityLog" name="activityLog" rows="6" readonly> {{activitylog}} </textarea>
+      </div>
+  
+ 
+  </form>
+  
