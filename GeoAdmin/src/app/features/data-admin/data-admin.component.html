@@ -1,4 +1,3 @@
-<p>Geo Server Data Admin</p>
 <form class="responsive-form">
  
     <!-- First set of rows with label, dropdown, and button -->
@@ -47,7 +46,8 @@
     </div>
     <div class="form-row">
       <label for="textbox4">Password</label>
-      <input type="text" id="textboxpassword" name="textbox4" [(ngModel)]="dataadmin.datastore.password">
+      <input type="password" id="textboxpassword" name="textbox4" [(ngModel)]="dataadmin.datastore.password">
+ 
     </div>
     <div class="form-row">
       
@@ -55,12 +55,27 @@
       <button type="button" (click)="createDatastore()"  >Create Datastore</button>
 
       </div>
+      <div class="input-group-append">
+        <span class="input-group-text">
+          <i
+            class="fa"
+            [ngClass]="{
+              'fa-eye-slash': !fieldTextType,
+              'fa-eye': fieldTextType
+            }"
+            (click)="toggleFieldTextType()"
+          ></i>
+        </span>
+      </div>
       <!-- Text area for activity log -->
       <div class="form-row">
         <label for="activityLog">Activity Log</label>
         <textarea id="activityLog" name="activityLog" rows="6" readonly> {{activitylog}} </textarea>
       </div>
+
+    
+<div>
+   </div>
   
- 
   </form>
   

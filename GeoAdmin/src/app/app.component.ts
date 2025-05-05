@@ -4,7 +4,7 @@ import { DataAdminComponent } from './features/data-admin/data-admin.component';
   
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, DataAdminComponent],
+  imports: [DataAdminComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

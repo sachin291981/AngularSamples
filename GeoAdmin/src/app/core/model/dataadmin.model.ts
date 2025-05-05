@@ -17,3 +17,16 @@ export interface DataAdmin {
 
     }
     
+    
+export interface ConnectionParameter {
+      '@key': string;
+      '$': string;
+    }
+    
+    export interface DataStoreJson {
+      name: string;
+      connectionParameters: {
+        entry: ConnectionParameter[];
+      };
+    }
+    

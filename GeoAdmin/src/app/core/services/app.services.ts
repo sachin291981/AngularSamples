@@ -6,8 +6,18 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class ApiService {
+    CreateDataStore(datajson: string, worksapcename: any) :Observable<any> {
+        const headers = new HttpHeaders({
+            'accept': 'text/html',
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa(`${this.username}:${this.password}`)
+        });
+        const datastorecreateurl = this.baseurl + "/" + worksapcename + "/datastores";
+        return this.http.post<any>(datastorecreateurl, datajson, { headers });
+     }
 
-    private baseurl = 'https://geosolutions-arcgis.centralindia.cloudapp.azure.com/geoserver/rest/workspaces' // Base REST API Url
+    private baseurl = 'https://geosolutions-arcgis.centralindia.cloudapp.azure.com/geoserver/rest/workspaces'; // Base REST API Url
+                     // 'https://geosolutions-arcgis.centralindia.cloudapp.azure.com/geoserver/rest/workspaces'
     private username = 'admin';  
     private password = 'L360@28Geo21P';  
 
@@ -27,7 +37,6 @@ export class ApiService {
             'Authorization': 'Basic ' + btoa(`${this.username}:${this.password}`)
         });
         return this.http.get<any>(this.baseurl, { headers });
-
     }
     GetDataStoreListByWorkspace(worksapce: string): Observable<any> {
 
